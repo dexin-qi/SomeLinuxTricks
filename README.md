@@ -36,3 +36,20 @@ Add `rcutree.rcu_idle_gp_delay=2 acpi_osi=Linux` options to `/etc/default/grub` 
 [Overview](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown)
 
 [Emoji Sheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
+
+## How to install ROS kinetic
+```bash
+sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.ustc.edu.cn/ros/ubuntu/ $DISTRIB_CODENAME main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+```bash
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 0xB01FA116 && sudo apt-get update
+```
+```bash
+sudo rosdep init && rosdep update
+```
+```bash
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc && source ~/.bashrc
+```
+```bash
+sudo apt-get install python-rosinstall
+```
