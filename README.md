@@ -53,3 +53,8 @@ echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc && source ~/.bashrc
 ```bash
 sudo apt-get install python-rosinstall
 ```
+
+## How to relize ttyUSB port readable
+```bash
+sudo usermod -aG dialout ${USER}
+```
