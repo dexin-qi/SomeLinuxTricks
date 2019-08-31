@@ -6,6 +6,55 @@ Use `tree -L 2 -d` to list Level 2 directories.
 
 Use `tree --help` to list this command's help files.
 
+## How to setup grub files to enable the NVIDIA GPU for ThinkPad S5 Gen2 :+1:
+Add `rcutree.rcu_idle_gp_delay=2 acpi_osi=Linux` options to `/etc/default/grub` Line `GRUB_CMDLINE_LINUX_DEFAULT`
+**Final Views** of Line `GRUB_CMDLINE_LINUX_DEFAULT` should be:
+`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash rcutree.rcu_idle_gp_delay=2 acpi_osi=Linux"`
+```bash
+sudo update-grub
+```
+
+## Blacklist noveau driver
+```bash
+sudo gedit /etc/modprobe.d/blacklist.conf 
+```
+```
+blacklist vga16fb
+blacklist nouveau
+blacklist rivafb
+blacklist rivatv
+blacklist nvidiafb 
+```
+```bash
+sudo update-initramfs -u 
+```
+Reboot Ubuntu system
+```bash
+lsmod | grep nouveau
+```
+
+## How to install CUDA (with NVIDIA driver)
+Just install CUDA is enough! It will automaticly install NVIDIA driver.
+```bash
+sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install cuda
+```
+Add environment PATH value to ~/.bashrc
+```
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:/usr/local/cuda-9.0/extras/CUPTI/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+
+## How to install cudnn
+Unzip the cudnn package
+```bash
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+```
+
 ## How to install Shadowsocks :smirk:
 ```bash
 sudo add-apt-repository ppa:hzwhuang/ss-qt5
@@ -26,11 +75,6 @@ sudo apt install unity-tweak-tool
 sudo apt install flatabulous-theme
 sudo apt install ultra-flat-icons
 ```
-
-## How to setup grub files to enable the NVIDIA GPU for ThinkPad S5 Gen2 :+1:
-Add `rcutree.rcu_idle_gp_delay=2 acpi_osi=Linux` options to `/etc/default/grub` Line `GRUB_CMDLINE_LINUX_DEFAULT`
-**Final Views** of Line `GRUB_CMDLINE_LINUX_DEFAULT` should be:
-`GRUB_CMDLINE_LINUX_DEFAULT="quiet splash rcutree.rcu_idle_gp_delay=2 acpi_osi=Linux"`
 
 ## Where to find GitHub's Markdown Format
 [Overview](https://guides.github.com/features/mastering-markdown/#GitHub-flavored-markdown)
