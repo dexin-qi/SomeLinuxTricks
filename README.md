@@ -61,6 +61,14 @@ sudo add-apt-repository ppa:hzwhuang/ss-qt5
 sudo apt-get update
 sudo apt-get install shadowsocks-qt5
 ```
+
+## How to install indicator-sysmonitor
+```bash
+sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor  
+sudo apt-get update  
+sudo apt-get install indicator-sysmonitor 
+```
+
 ## How to set SwitchyProxyOmega AutoProxy
 ```
 https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
