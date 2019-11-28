@@ -111,10 +111,11 @@ sudo apt-get install python-rosinstall
 sudo usermod -aG dialout ${USER}
 ```
 
-## How to install gflags and glog
+## How to install gflags and glog :thinking:
 ```bash
 git clone https://github.com/gflags/gflags
 cd gflags
+
 cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DINSTALL_HEADERS=ON -DINSTALL_SHARED_LIBS=ON -DINSTALL_STATIC_LIBS=ON ..
 make -j8
 sudo make install
