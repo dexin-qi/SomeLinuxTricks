@@ -110,3 +110,24 @@ sudo apt-get install python-rosinstall
 ```bash
 sudo usermod -aG dialout ${USER}
 ```
+
+## How to install gflags and glog
+```bash
+git clone https://github.com/gflags/gflags
+cd gflags
+cmake -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=ON -DINSTALL_HEADERS=ON -DINSTALL_SHARED_LIBS=ON -DINSTALL_STATIC_LIBS=ON ..
+make -j8
+sudo make install
+```
+glog 编译安装
+```bash
+sudo apt-get install autoconf automake libtool
+
+git clone https://github.com/google/glog
+cd glog
+
+./autogen.sh
+./configure
+make -j8
+sudo make install
+```
